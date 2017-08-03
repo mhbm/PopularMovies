@@ -18,13 +18,9 @@ import com.squareup.picasso.Picasso;
 @SuppressWarnings("DefaultFileTemplate")
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapterViewHolder> {
 
-    private static final String BASE_URL = "http://image.tmdb.org/t/p/";
-
-    private static final String SIZE_IMAGE = "w185/";
     private final MovieAdapterOnClickHandler mClickHandler;
     private MovieModel[] mMovieList;
     private Context mContext;
-
 
     public MovieAdapter(MovieAdapterOnClickHandler clickHandler) {
         mClickHandler = clickHandler;
@@ -56,10 +52,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         }
     }
 
-    public MovieModel[] getMovieList() {
-        return mMovieList;
-    }
-
     public void setMovieList(MovieModel[] movie) {
         mMovieList = movie;
         notifyDataSetChanged();
@@ -86,9 +78,5 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
             MovieModel movieClicked = mMovieList[adapterPosition];
             mClickHandler.onClick(movieClicked);
         }
-
-
     }
-
-
 }

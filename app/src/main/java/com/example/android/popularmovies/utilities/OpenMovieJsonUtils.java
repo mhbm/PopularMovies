@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public final class OpenMovieJsonUtils {
 
     public static String[] getMovieFromJson(String movieJsonStr) throws JSONException {
-        String[] parsedMovieData = null;
+        String[] parsedMovieData;
 
         JSONObject movieJson = new JSONObject(movieJsonStr);
 
@@ -23,29 +23,19 @@ public final class OpenMovieJsonUtils {
         parsedMovieData = new String[movieArray.length()];
 
         for (int i = 0; i < movieArray.length(); i++) {
-            String poster_path;
 
-            /* Get the JSON object representing the day */
             JSONObject movie = movieArray.getJSONObject(i);
 
-//            poster_path = movieArray.getJSONObject(i).getString("poster_path");
-
             MovieModel movieGet = new MovieModel();
-            movieGet.setPoster_path(movieArray.getJSONObject(i).getString("poster_path"));
-            movieGet.setTitle(movieArray.getJSONObject(i).getString("title"));
-            movieGet.setOverview(movieArray.getJSONObject(i).getString("overview"));
-            movieGet.setRelease_date(movieArray.getJSONObject(i).getString("release_date"));
-            movieGet.setVote_average(movieArray.getJSONObject(i).getString("vote_average"));
+            movieGet.setPoster_path(movie.getString("poster_path"));
+            movieGet.setTitle(movie.getString("title"));
+            movieGet.setOverview(movie.getString("overview"));
+            movieGet.setRelease_date(movie.getString("release_date"));
+            movieGet.setVote_average(movie.getString("vote_average"));
 
-
-//            parsedMovieData[i] = movieGet.toString();
             parsedMovieData[i] = movieGet.getPoster_path() + " - " + movieGet.getTitle() + " - " + movieGet.getOverview() + " - " + movieGet.getRelease_date() + " - " + movieGet.getVote_average();
-//            parsedMovieData[i] = poster_path;
 
         }
         return parsedMovieData;
-
-
     }
-
 }
