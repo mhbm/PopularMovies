@@ -12,12 +12,11 @@ import com.example.android.popularmovies.data.MovieModel;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by lsitec101.macedo on 31/07/17.
+ * Created by Mateus Macedo on 31/07/17.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapterViewHolder> {
-
-    private static final String LOG_TAG = MovieAdapter.class.getSimpleName();
 
     private static final String BASE_URL = "http://image.tmdb.org/t/p/";
 
@@ -43,14 +42,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
     @Override
     public void onBindViewHolder(MovieAdapterViewHolder holder, int position) {
-
         MovieModel movieClicked = mMovieList[position];
-//        String URLPicasso = BASE_URL + SIZE_IMAGE + "/" + movieClicked.getPoster_path();
-
         Picasso.with(mContext).load(movieClicked.takeUrlImage()).into(holder.mImageView);
-//        mMovieList[position].setPoster_path(URLPicasso);
-
-
     }
 
     @Override
@@ -73,7 +66,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
     }
 
     public interface MovieAdapterOnClickHandler {
-        public void onClick(MovieModel movie);
+        void onClick(MovieModel movie);
     }
 
     public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -82,7 +75,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
 
         public MovieAdapterViewHolder(View view) {
             super(view);
-            mImageView = (ImageView) view.findViewById(R.id.iv_movie);
+            mImageView = view.findViewById(R.id.iv_movie);
 
             view.setOnClickListener(this);
         }

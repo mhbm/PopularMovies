@@ -25,7 +25,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
-    boolean networkStatus;
+    private boolean networkStatus;
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
     private TextView mErrorMessageDisplay;
@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         return super.onOptionsItemSelected(item);
     }
 
-    public class FetchMovieTask extends AsyncTask<String, Void, String[]> {
+    private class FetchMovieTask extends AsyncTask<String, Void, String[]> {
 
         @Override
         protected void onPreExecute() {
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
             checkNetworkAvailable();
 
-            if (networkStatus == false) {
+            if (!networkStatus) {
                 return null;
             }
 
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
                 String jsonMovieResponse = NetworkUtils
                         .getResponseFromHttpUrl(weatherRequestUrl);
 
-                String[] simpleJsonMovieData = OpenMovieJsonUtils.getMovieFromJson(MainActivity.this, jsonMovieResponse);
+                String[] simpleJsonMovieData = OpenMovieJsonUtils.getMovieFromJson(jsonMovieResponse);
 
                 moveListSaved = simpleJsonMovieData;
 

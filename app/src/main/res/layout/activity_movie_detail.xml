@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +10,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal">
 
             <ImageView
@@ -18,7 +19,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:adjustViewBounds="true" />
+                android:adjustViewBounds="true"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/tv_movie_title"
@@ -42,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_movie_overview"
                 android:layout_marginTop="10dp"
-                android:text="Vote Average:"
+                android:text="@string/vote_average"
                 android:paddingLeft="10dp"
                 android:paddingBottom="10dp"
 
@@ -61,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_movie_vote_average"
-                android:text="Release Date :"
+                android:text="@string/release_date"
                 android:paddingLeft="10dp"
                 android:paddingBottom="10dp"/>
 

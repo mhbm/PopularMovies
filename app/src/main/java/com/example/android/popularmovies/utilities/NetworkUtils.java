@@ -11,9 +11,10 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
- * Created by lsitec101.macedo on 28/07/17.
+ * Created by Mateus Macedo on 28/07/17.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class NetworkUtils {
 
     private static final String TAG = NetworkUtils.class.getSimpleName();

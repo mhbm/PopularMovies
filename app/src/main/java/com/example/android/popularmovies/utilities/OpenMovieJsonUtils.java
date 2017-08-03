@@ -1,7 +1,5 @@
 package com.example.android.popularmovies.utilities;
 
-import android.content.Context;
-
 import com.example.android.popularmovies.data.MovieModel;
 
 import org.json.JSONArray;
@@ -9,12 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by lsitec101.macedo on 31/07/17.
+ * Created by Mateus Macedo on 31/07/17.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public final class OpenMovieJsonUtils {
 
-    public static String[] getMovieFromJson (Context context, String movieJsonStr) throws JSONException {
+    public static String[] getMovieFromJson(String movieJsonStr) throws JSONException {
         String[] parsedMovieData = null;
 
         JSONObject movieJson = new JSONObject(movieJsonStr);

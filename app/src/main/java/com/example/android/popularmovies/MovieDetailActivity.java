@@ -10,44 +10,32 @@ import com.example.android.popularmovies.data.MovieModel;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by lsitec101.macedo on 01/08/17.
+ * Created by Mateus Macedo on 01/08/17.
  */
 
+@SuppressWarnings("DefaultFileTemplate")
 public class MovieDetailActivity  extends AppCompatActivity{
-
-    private String mMovieTitle;
-    private String mMovieOverview;
-    private String mMoviePostPath;
-    private String mMovieVoteAverage;
-    private String mMovieDate;
-
-    private TextView mTitleDisplay;
-    private TextView mOverviewDisplay;
-    private ImageView mImageDisplay;
-    private TextView mRatingDisplay;
-    private TextView mReleaseDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-        mTitleDisplay = (TextView) findViewById(R.id.tv_movie_title);
-        mOverviewDisplay = (TextView) findViewById(R.id.tv_movie_overview);
-        mImageDisplay = (ImageView) findViewById(R.id.iv_movie_image);
-        mRatingDisplay = (TextView) findViewById(R.id.tv_movie_vote_average);
-        mReleaseDate = (TextView) findViewById(R.id.tv_movie_release_date);
+        TextView mTitleDisplay = (TextView) findViewById(R.id.tv_movie_title);
+        TextView mOverviewDisplay = (TextView) findViewById(R.id.tv_movie_overview);
+        ImageView mImageDisplay = (ImageView) findViewById(R.id.iv_movie_image);
+        TextView mRatingDisplay = (TextView) findViewById(R.id.tv_movie_vote_average);
+        TextView mReleaseDate = (TextView) findViewById(R.id.tv_movie_release_date);
 
         Intent intentThatStartedThisActivity = getIntent();
 
         if (intentThatStartedThisActivity != null) {
 
                 MovieModel movie = (MovieModel) intentThatStartedThisActivity.getSerializableExtra("MovieModel");
-                mMovieTitle = movie.getTitle();
-                mMovieOverview =  movie.getOverview();
-                mMoviePostPath = movie.getPoster_path();
-                mMovieVoteAverage = movie.getVote_average();
-                mMovieDate = movie.getRelease_date();
+            String mMovieTitle = movie.getTitle();
+            String mMovieOverview = movie.getOverview();
+            String mMovieVoteAverage = movie.getVote_average();
+            String mMovieDate = movie.getRelease_date();
 
                 mTitleDisplay.setText(mMovieTitle);
                 mOverviewDisplay.setText(mMovieOverview);
