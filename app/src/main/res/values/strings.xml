@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PopularMovies</string>
+    <string name="error_message">An error has occurred. Please try again by clicking in any options of menu</string>
+    <string name="action_popular">Popular</string>
+</resources>
