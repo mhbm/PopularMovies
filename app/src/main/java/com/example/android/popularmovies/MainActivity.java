@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     // 1 is Popular and 2 is Rating
     private int option;
 
+    private String[] moveListSaved;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +58,36 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
         option = 1;
 
-        loadMovies();
+        if (savedInstanceState != null) {
+            moveListSaved = savedInstanceState.getStringArray("EXTRA_MOVIES");
+            MovieModel[] movieList = new MovieModel[moveListSaved.length];
+            for (int i = 0; i < moveListSaved.length; i++) {
+
+                MovieModel aux = new MovieModel();
+                String[] testSplit = moveListSaved[i].split(" - ");
+                aux.setPoster_path(testSplit[0]);
+                aux.setTitle(testSplit[1]);
+                aux.setOverview(testSplit[2]);
+                aux.setRelease_date(testSplit[3]);
+                aux.setVote_average(testSplit[4]);
+                movieList[i] = aux;
+
+            }
+            mMovieAdapter.setMovieList(movieList);
+        } else {
+            loadMovies();
+        }
     }
 
     private void loadMovies() {
         showMovieView();
         new FetchMovieTask().execute();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putStringArray("EXTRA_MOVIES", moveListSaved);
     }
 
     @Override
@@ -164,6 +190,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
                 String[] simpleJsonMovieData = OpenMovieJsonUtils.getMovieFromJson(MainActivity.this, jsonMovieResponse);
 
+                moveListSaved = simpleJsonMovieData;
 
                 return simpleJsonMovieData;
 
